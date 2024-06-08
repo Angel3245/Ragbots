@@ -1,0 +1,131 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsBase.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsPivot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsTwister.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsMotor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsCube.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsAxle.proto"
+EXTERNPROTO "../protos/TinkerbotsLightSensor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsWheel.proto"
+EXTERNPROTO "../protos/TinkerbotsDistanceSensor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kinematics/tinkerbots/protos/TinkerbotsCubieBoxWithRoundSlots.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.43047191090589637 -0.10944778672855628 0.8959437013011734 3.589544256352235
+  position 2.726230966524481 0.8868107062196726 2.802857491577578
+  follow "Tinkerbots"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 0
+}
+RectangleArena {
+  floorSize 2 1
+}
+TinkerbotsBase {
+  translation 0.81767 -0.101754 0.0999877
+  rotation 0.44720917720443554 0.7745983069307669 -0.447215177206813 1.82347
+  controller "Obstacle_Robot"
+  upSlot TinkerbotsPivot {
+    rotation 0 0 1.0000000000000002 1.5707999999999998
+    slot TinkerbotsMotor {
+      frontSlot TinkerbotsAxle {
+        endSlot TinkerbotsWheel {
+        }
+      }
+      backSlot TinkerbotsAxle {
+        name "axle(1)"
+        endSlot TinkerbotsWheel {
+        }
+      }
+    }
+  }
+  downSlot TinkerbotsTwister {
+    slot TinkerbotsCube {
+      leftSlot TinkerbotsLightSensor {
+        rotation 0 0 1.0000000000000002 1.5707999999999998
+        name "left light sensor"
+        upSlot TinkerbotsDistanceSensor {
+          name "left distance sensor"
+          numberOfRays 2
+          aperture 0.5
+          backDSlot TinkerbotsCubieBoxWithRoundSlots {
+            translation -6.4763690379141086e-12 -4.4078460467215906e-07 0
+            rotation 0 0 1 6.283170614392848
+            axisSlot TinkerbotsAxle {
+              rotation 0 1 0 3.1415
+              endSlot TinkerbotsWheel {
+              }
+            }
+          }
+        }
+      }
+      rightSlot TinkerbotsLightSensor {
+        rotation 0 0 -1.0000000000000002 1.5707999999999998
+        name "right light sensor"
+        upSlot TinkerbotsDistanceSensor {
+          name "right distance sensor"
+          numberOfRays 2
+          aperture 0.5
+          backDSlot TinkerbotsCubieBoxWithRoundSlots {
+            translation -6.476369035984995e-12 4.407846045408627e-07 0
+            rotation 0 0 -1 6.283170614392848
+            axisSlot TinkerbotsAxle {
+              rotation 0 1 0 3.1415
+              endSlot TinkerbotsWheel {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  extensionSlot [
+    GPS {
+    }
+    Accelerometer {
+    }
+  ]
+}
+DEF LAMP Solid {
+  translation -0.89 -0.399998 0.055
+  rotation 0 0 1 -1.570795
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        roughness 1
+        metalness 0
+        emissiveColor 1 1 1
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+    PointLight {
+      attenuation 0 0 5
+      intensity 4
+    }
+  ]
+}
+Wall {
+  translation 0.170001 -0.199976 0
+  rotation 0 0 1 1.5708
+  name "wall(10)"
+  size 0.6 0.1 0.5
+  appearance Roughcast {
+    colorOverride 1 0 0.8
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
