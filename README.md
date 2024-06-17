@@ -64,6 +64,7 @@ navigation system whether its orientation has changed after falling.
 routes.
 - Goal: The ultimate target for the robot, represented by a visible light source, symbolising the endpoint
 of the course.
+
 Along with the code, three different environments (Webots worlds) are provided:
 - Basic Ragbots World: Composed only by a rectangle arena and the robot without any additional
 element.
